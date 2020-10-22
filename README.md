@@ -1,11 +1,9 @@
 # Programmierprojekt: <Themenname>
 
 * Teammitglieder:
-	1. <Name1>
+	1. Habib Ben Khedher (S0560734)
 	2. Leonardo Hoch (S0574093)
-	3. <Name3>
-	4. <Name4>
-* Team: <Teamnummer>
+* Team: 2.Test-Cases für UI
 * Semester: Wintersemester 2020/2021
 
 ## Installationshinweise
