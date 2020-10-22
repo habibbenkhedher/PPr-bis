@@ -2,7 +2,7 @@
 
 * Teammitglieder:
 	1. <Name1>
-	2. <Name2>
+	2. Leonardo Hoch (S0574093)
 	3. <Name3>
 	4. <Name4>
 * Team: <Teamnummer>
