@@ -2,7 +2,7 @@
 
 * Teammitglieder:
 	1. Habib Ben Khedher (S0560734)
-	2. Leonardo Hoch (S0574093)
+	2. Leonardo Hoch (S0574093)test
 * Team: 2.Test-Cases für UI
 * Semester: Wintersemester 2020/2021
 
