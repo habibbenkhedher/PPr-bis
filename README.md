@@ -1,4 +1,4 @@
-# Programmierprojekt: <Themenname>
+# Programmierprojekt: Skynet
 
 * Teammitglieder:
 	1. Habib Ben Khedher (S0560734)
