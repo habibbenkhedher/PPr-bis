@@ -1,53 +1,32 @@
-﻿using System;
+﻿//using System;
 using System.Security.Cryptography; //Erstellung von Hashcodes z.B. MB5
 using System.IO; //Filestream und File erstellung
-using System.Text; //Wird benötigt für UTF8Encoding //Wird nur für die Erstellung von Datein benötigt
+//using System.Text; //Wird benötigt für UTF8Encoding //Wird nur für die Erstellung von Datein benötigt
 using System.Linq; //Wird benötigt für Sequence
 public class Hashcode_Vergleich
 {
-    public static string speicherort = @"";
-    public Hashcode_Vergleich()
+    public static string Speicherpfad_Kontroll = @"";
+    public static byte[] Byte_Kontroll;
+
+    public Hashcode_Vergleich(string speicherpfad_kontroll)
     {
-        byte[] Nummer1;
-        byte[] Nummer2;
+        Speicherpfad_Kontroll = speicherpfad_kontroll;
+        var md5 = MD5.Create();
+        Byte_Kontroll = md5.ComputeHash(File.OpenRead(Speicherpfad_Kontroll));
+        //Console.WriteLine(Byte_Kontroll);
+    }
 
-        //Create File
-        using (FileStream datei = File.Create(speicherort))
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes("32");
-            // Add some information to the file.
-            datei.Write(info, 0, info.Length);
-        }
+    public bool Vergleich_Hash(string speicherpfad_neu)
+    {
 
-        //Nummer1 wird beschrieben
-        using (var md5 = MD5.Create())
-        {
-            using (var stream = File.OpenRead(speicherort))
-            {
-                Nummer1 = md5.ComputeHash(stream);
-            }
-        }
-        //Create File
-        using (FileStream datei = File.Create(speicherort))
-        {
-            byte[] info = new UTF8Encoding(true).GetBytes("32");
-            // Add some information to the file.
-            datei.Write(info, 0, info.Length);
-        }
-
-        //Nummer2 wird beschrieben
-        using (var md5 = MD5.Create())
-        {
-            using (var stream = File.OpenRead(speicherort))
-            {
-                Nummer2 = md5.ComputeHash(stream);
-            }
-        }
+        var md5 = MD5.Create();
+        byte[] Byte_neu = md5.ComputeHash(File.OpenRead(speicherpfad_neu));
+        //Console.WriteLine(Byte_Kontroll);
         //SequenceEqual vergleich 2 Byte Arrays
-        if (Nummer1.SequenceEqual(Nummer2))
-            Console.WriteLine("Gleich");
+        if (Byte_Kontroll.SequenceEqual(Byte_neu))
+            return true;
         else
-            Console.WriteLine("Nicht Gleich");
+            return false;
     }
     public static bool Existiert_Datei(string speicherort)
     {
@@ -56,5 +35,6 @@ public class Hashcode_Vergleich
         else
             return false;
     }
-
 }
+
+

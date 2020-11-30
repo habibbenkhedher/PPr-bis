@@ -1,6 +1,6 @@
-﻿using System;
-using System.IO;
-using System.IO.Packaging;
+﻿//using System;
+//using System.IO;
+//using System.IO.Packaging;
 //using System.Xml;
 //using System.Text;
 //using System.Xml.Linq;
@@ -11,35 +11,42 @@ using DocumentFormat.OpenXml.Wordprocessing;
 
 public class XML_Auslesen
 {
-    private static string Speicherort1 = @"";
-    private static string Speicherort2 = @"";
-    public XML_Auslesen()
+    //Befehl zum abrufen des aktuellen Pfades und in diesem zurück zu gehen.
+    //string Kontroll_Datei = System.IO.Path.GetFullPath(@"..\..\..\");
+    private static string Speicherpfad_Kontroll = @"";
+    public XML_Auslesen(string speicherpfad_kontroll)
     {
-        OpenAndAddTextToWordDocument(Speicherort1, "test");
-        OpenAndAddTextToWordDocument(Speicherort2, "test");
+        Speicherpfad_Kontroll = speicherpfad_kontroll;
     }
-    
-    public static void OpenAndAddTextToWordDocument(string filepath, string text)
+ 
+    public bool Vergleich_Body( string speicherpfad_neu)
     {
-        // Variable wordprocessingDocument beinhaltet die Datei, die ausgelesen wird
-        WordprocessingDocument wordprocessingDocument = WordprocessingDocument.Open(filepath, true);
+        //WordprocessingDocument ermöglicht bearbeiten und auslesen der Datei
+        WordprocessingDocument wordprocessingDocument_Kontroll = WordprocessingDocument.Open(Speicherpfad_Kontroll, false);
+        WordprocessingDocument wordprocessingDocument_neu= WordprocessingDocument.Open(speicherpfad_neu, false);
 
-        // über body lässt sich der Text im normalen Word Bereich schreiben
-        Body body = wordprocessingDocument.MainDocumentPart.Document.Body;
+        // über Body lässt sich der Text im normalen Word Bereich schreiben
+        Body body_Kontroll = wordprocessingDocument_Kontroll.MainDocumentPart.Document.Body;
+        Body body_neu = wordprocessingDocument_neu.MainDocumentPart.Document.Body;
 
-        // Erstellt die Variable run, welche es ermöglicht Den Body zu beschreiben
-        Paragraph para = body.AppendChild(new Paragraph());
-        Run run = para.AppendChild(new Run());
+        //
+        //Console.WriteLine(body_Kontroll.InnerText);
+        //Console.WriteLine(body_neu.InnerText);
 
-        //Fügt der Datei einen Text hinzu
-        //run.AppendChild(new Text(text));
-
-        // Schreibt den Inhalt des Bodys aus
-        Console.WriteLine(body.InnerText);
+        if(body_Kontroll.InnerText == body_neu.InnerText)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
         // Schließt die Datei
-        wordprocessingDocument.Close();
+        //wordprocessingDocument_neu.Close();
+
     }
-    
+
+
 
 
 }
