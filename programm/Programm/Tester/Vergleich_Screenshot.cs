@@ -1,6 +1,8 @@
 ﻿//using System;
 using System.Drawing;
-
+/// <summary>
+/// wqewqw
+/// </summary>
 public class Vergleich_Screenshot
 {
     public static string Speicherpfad_Kontroll = @"";
@@ -11,7 +13,11 @@ public class Vergleich_Screenshot
         Speicherpfad_Kontroll = speicherpfad_kontroll;
         Bitmap_Kontroll = new Bitmap(Speicherpfad_Kontroll);
     }
-    
+    /// <summary>
+    /// asokdkoad
+    /// </summary>
+    /// <param name="speicherpfad_neu">wdqqww</param>
+    /// <returns></returns>
     public int Vergleich_Screen(string speicherpfad_neu)
     {
         bool Datei_Gleich = true;

@@ -105,8 +105,8 @@ namespace Tester_test
 
             //Weist der Variable "vergleich" die Originale Vergleichs Datei zu
             Vergleich_Screenshot vergleich = new Vergleich_Screenshot(Ordnerpfad + Original + Dateityp);
-
-            if (vergleich.Vergleich_Screen(Ordnerpfad + Datei_Gleich + Dateityp) == 0)
+            
+            if (vergleich.Vergleich_Screen(Ordnerpfad + Datei_Gleich + Dateityp  ) == 0)
             {
                 Console.WriteLine(Datei_Gleich + "  gleich");
             }
