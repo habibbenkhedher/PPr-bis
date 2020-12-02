@@ -5,21 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Programm"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="423" Width="635">
     <Grid>
-        <Label Content="Wählen Sie ein Progamm zu testen:"></Label>
-        <ComboBox ItemsSource="{Binding ListProgramm}"  VerticalAlignment="Top" HorizontalAlignment="Left" Width="200" Margin="10,28,0,0">
+        <TextBlock Text="Wählen Sie ein Programm" Margin="10,10,10,10" />
+        <ComboBox ItemsSource="{Binding ListProgramm}"  VerticalAlignment="Top" Margin="10,28,0,0" HorizontalAlignment="Left" Width="200">
 
             <ComboBox.ItemTemplate>
 
                 <DataTemplate>
 
-                    <TextBlock Text="{Binding Path=Name}"></TextBlock> 
+                    <TextBlock Text="{Binding Path=Name}"/>
                 </DataTemplate>
-                    
+
             </ComboBox.ItemTemplate>
 
         </ComboBox>
+        <TextBlock  HorizontalAlignment="Left" Margin="10,55,0,0" Text="Szenarien :" TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="-0.487,-0.687" />
+        <Button Content="neue Szenario erstellen" HorizontalAlignment="Left" Margin="19,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.801,-1.016" Width="141" Click="Button_Click_2"/>
+        <Button Content="gewählte Szenario löschen" HorizontalAlignment="Left" Margin="193,76,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.801,-1.016" Width="152"/>
+        <ListBox Margin="10,101,30,57">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <CheckBox   
+                     IsChecked="{Binding Path=IsSelected, RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"   
+                     Content="{Binding Path=Szenario,    RelativeSource={RelativeSource AncestorType={x:Type ListBoxItem}}}"   />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Content="Daten überprüfen" Margin="0,0,160,20" Click="Button_Click" HorizontalAlignment="Right" Width="105" Height="20" VerticalAlignment="Bottom"/>
+        <Button Content="Abbrechen" Margin="0,0,30,20" RenderTransformOrigin="0.543,0.613" Click="Button_Click_1" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="101"/>
+
+
 
     </Grid>
 </Window>

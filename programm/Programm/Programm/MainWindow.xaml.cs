@@ -15,23 +15,39 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using UI;
 
 namespace Programm
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window , INotifyPropertyChanged 
+
+
+    public partial class MainWindow: Window
     {
-       
-             
-        public MainWindow()
-        {
+        public MainWindow() 
+
+            {
             InitializeComponent();
+
+            }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            LastControl lc = new LastControl();
+            lc.ShowDialog();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
 
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DefinitionSzr nSczr = new DefinitionSzr();
+            nSczr.ShowDialog();
+        }
     }
 }
