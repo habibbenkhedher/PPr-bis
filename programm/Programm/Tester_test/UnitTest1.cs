@@ -7,7 +7,7 @@ namespace Tester_test
     public class UnitTest1
     {
         [TestMethod]
-        public void TestHashcode()
+        public void TestHashcode_ohne_Screen()
         {
             string Ordnerpfad = @"C:\Users\Copperbottom\Desktop\Testszenarien\TXT_Text\";
             string Original = "Original";
@@ -15,6 +15,9 @@ namespace Tester_test
             string neu = "Abweichung2";
             string neu2 = "Abweichung1";
             string Dateityp = ".txt";
+
+            
+
 
             //Weist der Variable "vergleich" die Originale Vergleichs Datei zu
             Hashcode_Vergleich vergleich = new Hashcode_Vergleich(Ordnerpfad + Original + Dateityp);
@@ -48,6 +51,69 @@ namespace Tester_test
                 //***Aufrufen von Screenshot hinzufügen
                 Console.WriteLine(neu2 + "  ungleich");
             }
+        }
+        [TestMethod]
+        public void TestHashcode_mit_Screen()
+        {
+            string Ordnerpfad = @"C:\Users\Copperbottom\Desktop\Testszenarien\TXT_Text\";
+            string Original = "Original";
+            string Datei_Gleich = "Datei_Gleich";
+            string neu = "Abweichung2";
+            string neu2 = "Abweichung1";
+            string Dateityp = ".txt";
+            string Dateityp2 = ".png";
+
+
+
+
+            //Weist der Variable "vergleich" die Originale Vergleichs Datei zu
+            Hashcode_Vergleich vergleich = new Hashcode_Vergleich(Ordnerpfad + Original + Dateityp, Ordnerpfad + Original + Dateityp2);
+
+
+            if (vergleich.Vergleich_Hash(Ordnerpfad + Datei_Gleich + Dateityp, Ordnerpfad + Datei_Gleich + Dateityp2) == true)
+            {
+                Console.WriteLine(Datei_Gleich + "  gleich");
+            }
+            else
+            {
+                Console.WriteLine(Datei_Gleich + "  ungleich");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("Sollte: Screenshot richtig, Datei falsch");
+            //Vergleicht den Text vom Original und der Datei "neu", beim Screenshot wird die richtigeDatei geöffnet
+            if (vergleich.Vergleich_Hash(Ordnerpfad + neu + Dateityp, Ordnerpfad + Datei_Gleich + Dateityp2) == true)
+            {
+                
+                Console.WriteLine(neu + "  gleich");
+            }
+            else
+            {
+                //***Aufrufen von Screenshot hinzufügen
+                Console.WriteLine(neu + "  ungleich");
+            }
+            Console.WriteLine("");
+            //Vergleicht den Text vom Original und der Datei "neu"
+            if (vergleich.Vergleich_Hash(Ordnerpfad + neu + Dateityp, Ordnerpfad + neu + Dateityp2) == true)
+            {
+                Console.WriteLine(neu + "  gleich");
+            }
+            else
+            {
+                //***Aufrufen von Screenshot hinzufügen
+                Console.WriteLine(neu + "  ungleich");
+            }
+            Console.WriteLine("");
+            //Vergleicht den Text vom Original und der Datei "neu2"
+            if (vergleich.Vergleich_Hash(Ordnerpfad + neu2 + Dateityp, Ordnerpfad + neu2 + Dateityp2) == true)
+            {
+                Console.WriteLine(neu2 + "  gleich");
+            }
+            else
+            {
+                //***Aufrufen von Screenshot hinzufügen
+                Console.WriteLine(neu2 + "  ungleich");
+            }
+            Console.WriteLine("");
         }
         [TestMethod]
         public void TestBodyText()
